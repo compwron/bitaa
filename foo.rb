@@ -3,12 +3,9 @@ b = a.shuffle
 missing_number = b.pop
 
 def find_missing_number(a, b)
-  sa = a.sort
-  sb = b.sort
-  (0..a.count).each {|i|
-    return sa[i] unless sa[i] == sb[i]
-  }
-  nil
+  sa = a.inject(&:+)
+  sb = b.inject(&:+)
+  sa - sb
 end
 
 result = find_missing_number(a, b)
